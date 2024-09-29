@@ -37,7 +37,6 @@ def allocate_node(tree):
 
 
 def check_insert(tree, node, index):
-    # print(tree[:10])
     print(node)
     changed = False
     if node[PARENT] == NULL and node[COLOR] == 'red': # Case 0
@@ -63,8 +62,6 @@ def check_insert(tree, node, index):
         parent[COLOR] = 'black'
         uncle[COLOR] = 'black'
     else: # Case 2 and 3, black uncle
-        # case i'm the left child
-
         if parent[COLOR] != 'red':
             return False
          
@@ -164,9 +161,8 @@ def insert_node(tree, value, color='red'):
                 else:
                     current = tree[current][RIGHT]
     check_insert(tree, tree[new_node], new_node)
-    #visualize_tree(tree)
     check_tree(tree)
-    visualize_tree(tree)
+    # visualize_tree(tree) uncomment to visualize the tree after each insertion
     
 
 # In-order traversal to display the tree
@@ -209,7 +205,7 @@ def visualize_tree(tree):
     # Start adding edges from the root
     add_edges(root)
 
-    # Get colors for nodes based on their color attribute
+    # Get colors for nodes based on their color attribute, not on pos order
     node_colors = []
     for key in pos.keys():
         for node in tree:
@@ -227,12 +223,6 @@ def visualize_tree(tree):
     plt.show()
 
 
-def print_tree(tree):
-    # print in command line the tree structure
-    for i in range(0, 9):
-        print(f"Node {i}: Info={tree[i][INFO]}, Color={tree[i][COLOR]}, Left={tree[i][LEFT]}, Right={tree[i][RIGHT]}, Parent={tree[i][PARENT]}")
-    print("")
-
 ct = initialize_tree()
 
 def next_collatz(n):
@@ -242,10 +232,6 @@ def next_collatz(n):
 n = [3, 5, 9, 2, 4, 7, 1, 8, 6]
 for val in n:
     insert_node(ct, val)
-    #visualize_tree(ct)
-    #print_tree(ct)
     print(f"Inserted {val}")
     print("")
 visualize_tree(ct)
-#preorder_traversal(ct, ct[0][LEFT])
-#visualize_tree(ct)
