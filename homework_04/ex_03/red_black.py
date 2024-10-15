@@ -160,9 +160,11 @@ def insert_node(tree, value, color='red'):
                     break
                 else:
                     current = tree[current][RIGHT]
+    #visualize_tree(tree)
     check_insert(tree, tree[new_node], new_node)
+
     check_tree(tree)
-    # visualize_tree(tree) uncomment to visualize the tree after each insertion
+    visualize_tree(tree) #uncomment to visualize the tree after each insertion
     
 
 # In-order traversal to display the tree
@@ -219,7 +221,7 @@ def visualize_tree(tree):
 
     # Draw the tree with specified positions
     nx.draw(G, pos, with_labels=True, node_size=500, node_color=node_colors, font_size=10, font_weight="bold", arrows=True)
-    plt.savefig("red_black_tree.png")
+    plt.savefig(f"tree_{len(pos)}.png")
     plt.show()
 
 
@@ -229,9 +231,11 @@ def next_collatz(n):
     return n // 2 if n % 2 == 0 else 3 * n + 1
 
 # collatz of 51 array
-n = [3, 5, 9, 2, 4, 7, 1, 8, 6]
-for val in n:
-    insert_node(ct, val)
-    print(f"Inserted {val}")
+n = 7
+insert_node(ct, n)
+while n > 1:
+    n = next_collatz(n)
+    insert_node(ct, n)
+    print(f"Inserted {n}")
     print("")
 visualize_tree(ct)

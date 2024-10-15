@@ -143,9 +143,11 @@ ct = initialize_tree()
 def next_collatz(n):
     return n // 2 if n % 2 == 0 else 3 * n + 1
 
-n = [3, 5, 9, 2, 4, 7, 1, 8, 6]
-for node in n:
-    insert_node(ct, node, 'red')
+n = 7
+insert_node(ct, n, 'red')
+while n > 1:
+    n = next_collatz(n)
+    insert_node(ct, n, 'red')
 preorder_traversal(ct, ct[0][LEFT])
 visualize_tree(ct)
 

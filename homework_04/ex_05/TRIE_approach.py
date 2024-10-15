@@ -45,4 +45,5 @@ collatz_trie.insert_collatz_sequence(51)
 test_numbers = ['51', '25', '531', '2', '45']
 search_results = {num: collatz_trie.search(num) for num in test_numbers}
 
+
 print(search_results)  # Expected: {'51': True, '25': False, '531': False, '2': True, '45': False}
