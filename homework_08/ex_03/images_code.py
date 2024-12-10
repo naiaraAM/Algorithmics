@@ -55,7 +55,7 @@ def create_graph(nodes, Xstep=40, Ystep=40):
 
 def calculate_edge_weights(G, rgb_array):
     """Calculate weights for edges based on pixel brightness along the line."""
-    specific_color = np.array([0, 255, 0]) # set to green
+    specific_color = np.array([255, 255, 0]) # set to green
 
     for u, v in G.edges():
         x1, y1 = G.nodes[u]['position']
